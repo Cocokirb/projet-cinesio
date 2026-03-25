@@ -2,24 +2,22 @@
 
 function findAllFilms() : array {
 
-    // Connection a la base de données 
-
     require_once __DIR__ . "/../database/connection.php" ;
     $connexion = getConnexion() ;
 
-    // Execution réelle de la requete 
-
-    $requeteSQL = "SELECT * FROM film , pays , genre WHERE film.id_pays = pays.id AND film.id_genre = genre.id LIMIT 100" ;
-    $requete = $connexion -> prepare($requeteSQL) ; // requete est le ticket cf cours 
+    $requeteSQL = "SELECT film.id , film.titre , film.date_sortie , film.duree , film.synopsis , film.image , film.id_genre , film.id_pays , genre.nom AS genre, pays.nom AS pays, pays.initiale
+    FROM film , pays , genre
+    WHERE film.id_pays = pays.id 
+    AND film.id_genre = genre.id LIMIT 100" ;
+    
+    $requete = $connexion -> prepare($requeteSQL) ; 
     $requete ->execute() ;
 
-    // Récupération des enregistrements
-
     $requete ->setFetchMode(PDO::FETCH_ASSOC) ;
-    // Pour récuperer un tableau
 
-    $films = $requete -> fetchAll() ;
+    $films = $requete->fetchAll() ;
     return $films ;
+
 }
 
 ?>

@@ -1,9 +1,9 @@
 <?php
     include __DIR__ . "/../src/includes/header.php" ;
-    require_once __DIR__ . "/../src/repositories/filmrepository.php" ;
+    require_once __DIR__ . "/../src/repositories/filmRepository.php" ;
     require_once __DIR__ . "/../src/lib/functions.php" ;
-    $nombreFilmDisponibles = count($films) ;
-    /*$films = findAllFilms() ;*/
+    $tabFilms = findAllFilms() ;
+    $nombreFilmDisponibles = count($tabFilms) ;
 ?>
 
 <main>
@@ -13,9 +13,9 @@
 
     <div class="main">
     <?php if($nombreFilmDisponibles === 0 ) : ?>
-        <p class="text">Aucun film disponible pour le moment</p>
-        <?php else : ?>
-        <?php  foreach($films as $film) : ?>
+        <p>Aucun film disponible pour le moment</p>
+    <?php else : ?>
+        <?php foreach($tabFilms as $film) : ?>
             
             <div class="card"> 
                 <span class="badge">
@@ -36,14 +36,14 @@
 
                     <p class="titre"><?= $film['titre'] ?></p> <br> 
 
-                    <?= $film['nom']  ." " . convertirDuree($film['duree']) ?> <br> <br>
+                    <?= $film['genre']  ." " . convertirDuree($film['duree']) ?> <br> <br>
                     <?php if (strlen($film["synopsis"]) >= 60) :?>
                         <?= substr($film["synopsis"] , 0, 60 ) . "..." ?> 
                     <?php else : ?>
                         <?= $film["synopsis"] ?>
                     <?php endif ; ?><br> <br> <br>
 
-                    <div><a href="#" class="btn">Détails</a></div>  <br><br>
+                    <div><a href="detail_film.php?id=<?= $film['id']?>" class="btn">Détails</a></div>  <br><br>
 
                 </div>
             

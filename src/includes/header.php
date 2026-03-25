@@ -27,7 +27,7 @@
             </a>
 
             <ul class="onglets">
-                <li><a href="#" style="color: violet;">Accueil</a></li>
+                <li><a href="index.php" style="color: violet;">Accueil</a></li>
                 <li><a href="#">Catalogue</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
