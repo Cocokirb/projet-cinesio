@@ -11,7 +11,4 @@
         }
         
     } 
-
-    $min = 55 ;
-    echo convertirDuree($min);
 ?>
