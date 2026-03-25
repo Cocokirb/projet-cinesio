@@ -4,7 +4,14 @@
     function convertirDuree (int $duree) : string {
         $heure = intdiv($duree,60);
         $minute = $duree%60 ;
-        return " • $heure h $minute min" ;
+        if ($heure == 0) {
+            return " •$minute min" ;
+        }else {
+            return " • $heure h $minute min" ;
+        }
+        
     } 
 
+    $min = 55 ;
+    echo convertirDuree($min);
 ?>
