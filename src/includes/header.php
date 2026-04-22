@@ -27,8 +27,9 @@
             </a>
 
             <ul class="onglets">
-                <li><a href="index.php" style="color: violet;">Accueil</a></li>
-                <li><a href="#">Catalogue</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="index.php">Catalogue</a></li>
+                <li><a href="ajouter_film.php">Ajouter un film</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>

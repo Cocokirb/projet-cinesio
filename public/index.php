@@ -43,7 +43,10 @@
                         <?= $film["synopsis"] ?>
                     <?php endif ; ?><br> <br> <br>
 
-                    <div><a href="detail_film.php?id=<?= $film['id']?>" class="btn">Détails</a></div>  <br><br>
+                    <div>
+                        <a href="detail_film.php?id=<?= $film['id']?>" class="btn">Détails</a>
+                    </div>  
+                    <br><br>
 
                 </div>
             
