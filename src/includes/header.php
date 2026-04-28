@@ -28,7 +28,7 @@
 
             <ul class="onglets">
                 <li><a href="index.php">Accueil</a></li>
-                <li><a href="index.php">Catalogue</a></li>
+                <li><a href="inscription.php">Inscription</a></li>
                 <li><a href="ajouter_film.php">Ajouter un film</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
