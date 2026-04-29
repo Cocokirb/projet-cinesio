@@ -74,7 +74,7 @@
             <form action="" method="post" novalidate>
                 <div class="form-group">
                     <label for="email">Adresse Email <span class="required">*</span></label>
-                    <input type="email" name="email" id="email" required value = "<?php $mail ?>" placeholder="Ex: jean.dupont@email.com">
+                    <input type="email" name="email" id="email" required value = "<?php $_POST['email'] ?>" placeholder="Ex: jean.dupont@email.com">
                     <?php if (isset($erreurs['email'])): ?>
                         <small class="form-error"><?= $erreurs['email'] ?></small>
                     <?php endif; ?>
@@ -82,7 +82,7 @@
 
                 <div class="form-group">
                     <label for="pseudo">Pseudonyme <span class="required">*</span></label>
-                    <input type="text" name="pseudo" id="pseudo" required  value = "<?php $pseudo ?>" placeholder="Ex: JeanD88">
+                    <input type="text" name="pseudo" id="pseudo" required  value = "<?php $_POST['pseudo'] ?>" placeholder="Ex: JeanD88">
                     <small class="form-hint">3 caractères minimum.</small>
                     <?php if (isset($erreurs['pseudo'])): ?>
                         <small class="form-error"><?= $erreurs['pseudo'] ?></small>

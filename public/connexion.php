@@ -20,10 +20,13 @@
             $utilisateurData = findUtilisateurByEmail($mail);
             if (!$utilisateurData) {
                 $erreurs['email'] = "L'adresse mail ou le mot de passe est incorrect.";
+                $erreurs['mdp'] = "L'adresse mail ou le mot de passe est incorrect.";
             }
         }
         if (empty($mdp)) {
             $erreurs['mdp'] = "Le mot de passe est obligatoire.";
+        }elseif(strlen($mdp) < 8) {
+            $erreurs['mdp'] = "Le mot de passe doit contenir au moins 8 caractères.";
         } elseif ($utilisateurData && password_verify($mdp, $utilisateurData['mot_de_passe']) === false) {
             $erreurs['email'] = "L'adresse mail ou le mot de passe est incorrect.";
             $erreurs['mdp'] = "L'adresse mail ou le mot de passe est incorrect.";
@@ -57,7 +60,7 @@
             <form action="" method="post" novalidate class="connexion-form">
                 <div class="form-group">
                     <label for="email">Adresse Email</label>
-                    <input type="email" name="email" id="email" required value="<?php $mail ?? '' ?>" placeholder="votre@email.com">
+                    <input type="email" name="email" id="email" required value="<?php $_POST['email'] ?>" placeholder="votre@email.com">
                     <?php if (isset($erreurs['email'])): ?>
                         <small class="form-error"><?= $erreurs['email'] ?></small>
                     <?php endif; ?>
