@@ -113,11 +113,13 @@
 
 <body>
 
-    <center><h1>Ajouter un nouveau film</h1>
-    <p>Veuillez renseigner les informations ci-dessous pour ajouter un film au catalogue CinéSIO.</p></center>
+    <main class="ajouter-film-main">
+        <div class="ajouter-film-header">
+            <h1>Ajouter un nouveau film</h1>
+            <p>Veuillez renseigner les informations ci-dessous pour ajouter un film au catalogue CinéSIO.</p>
+        </div>
 
-    <div class="container">
-        
+        <div class="ajouter-film-container">
         <form action="" method="post" autocomplete="off" novalidate>
             <div class="form">
                 <label for="titreFilm">Titre du film <span class="required">*</span></label>
@@ -199,12 +201,12 @@
                 </div>
             </div>
             
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn-ajouter">
                 ⊕ Ajouter ce film au catalogue
             </button>
         </form>
-    </div>
-    <div>
+        
+        <!-- Liste des erreurs et succès -->
         <?php if ($success): ?>
             <?php $filmAInserer = [
                 'titre' => $titreFilm,
@@ -224,7 +226,7 @@
             $genre = '';
             $pays = '';            
             ?>
-            <div class="message message-success">
+            <div class="message message-succes">
                 ✓ Le film a été ajouté avec succès au catalogue!
             </div>
             <?php header('Location : index.php') ; 
@@ -241,9 +243,8 @@
                 </ul>
             </div>
         <?php endif; ?>
-    </div>
-
-</body>
+        </div>
+    </main>
 </html>
 
 <?php

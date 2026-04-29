@@ -1,6 +1,68 @@
 <?php
     include __DIR__ . "/../src/includes/header.php" ;
     require_once __DIR__ . "/../src/repositories/utilisateurRepository.php" ;
+
+    $mail  = '';
+    $pseudo = '';
+    $mdp = '';
+    $mdpConfirmation = '';
+    $erreurs = [];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $mail = trim($_POST['email'] ?? '');
+        $pseudo = htmlspecialchars(trim($_POST['pseudo'] ?? ''));
+        $mdp = $_POST['mot_de_passe'] ?? '';
+        $mdpConfirmation = $_POST['confirmation'] ?? '';
+
+        // Validations
+        if (empty($mail)) {
+            $erreurs['email'] = "L'adresse email est obligatoire.";
+        } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            $erreurs['email'] = "L'adresse email n'est pas valide.";
+        } elseif (findUtilisateurByEmail($mail)) {
+            $erreurs['email'] = "Cette adresse email est déjà utilisée.";
+        }
+
+        if (empty($pseudo)) {
+            $erreurs['pseudo'] = "Le pseudonyme est obligatoire.";
+        } elseif (strlen($pseudo) < 3) {
+            $erreurs['pseudo'] = "Le pseudonyme doit contenir au moins 3 caractères.";
+        } elseif (strlen($pseudo) > 20) {
+            $erreurs['pseudo'] = "Le pseudonyme ne doit pas dépasser 20 caractères.";
+        } elseif (findUtilisateurByPseudo($pseudo)) {
+            $erreurs['pseudo'] = "Ce pseudonyme est déjà pris.";
+        }
+
+        if (empty($mdp)) {
+            $erreurs['mdp'] = "Le mot de passe est obligatoire.";
+        } elseif (strlen($mdp) < 8) {
+            $erreurs['mdp'] = "Le mot de passe doit contenir au moins 8 caractères.";
+        }
+
+        if ($mdp !== $mdpConfirmation) {
+            $erreurs['confirmation'] = "La confirmation du mot de passe ne correspond pas.";
+        }elseif (empty($mdpConfirmation)) {
+            $erreurs['confirmation'] = "La confirmation du mot de passe est obligatoire.";
+        }
+
+        // Si aucune erreur, créer le compte
+        if (empty($erreurs)) {
+            $data = [
+                'pseudo' => $pseudo,
+                'email' => $mail,
+                'mot_de_passe' => $mdp ,
+                'cree_le' => date('Y-m-d' . ' H:i:s')
+            ];
+            createUtilisateur($data);
+            $mail = '';
+            $pseudo = '';
+            $mdp = '';
+            $mdpConfirmation = '';
+            $erreurs = [];
+            header("Location: connexion.php");
+            exit;
+        }
+    }
 ?>
 
 <main>
@@ -9,27 +71,40 @@
         <p class="inscription-subtitle">Rejoignez la communauté CinéSIO pour accéder à toutes les fonctionnalités.</p>
 
         <div class="form-wrapper">
-            <form action="" method="post" autocomplete="off" novalidate>
+            <form action="" method="post" novalidate>
                 <div class="form-group">
                     <label for="email">Adresse Email <span class="required">*</span></label>
-                    <input type="email" name="email" id="email" required placeholder="Ex: jean.dupont@email.com">
+                    <input type="email" name="email" id="email" required value = "<?php $mail ?>" placeholder="Ex: jean.dupont@email.com">
+                    <?php if (isset($erreurs['email'])): ?>
+                        <small class="form-error"><?= $erreurs['email'] ?></small>
+                    <?php endif; ?>
                 </div>
 
                 <div class="form-group">
                     <label for="pseudo">Pseudonyme <span class="required">*</span></label>
-                    <input type="text" name="pseudo" id="pseudo" required placeholder="Ex: JeanD88">
+                    <input type="text" name="pseudo" id="pseudo" required  value = "<?php $pseudo ?>" placeholder="Ex: JeanD88">
                     <small class="form-hint">3 caractères minimum.</small>
+                    <?php if (isset($erreurs['pseudo'])): ?>
+                        <small class="form-error"><?= $erreurs['pseudo'] ?></small>
+                    <?php endif; ?>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="mot_de_passe">Mot de passe <span class="required">*</span></label>
-                        <input type="password" name="mot_de_passe" id="mot_de_passe" required>
+                        <input type="password" name="mot_de_passe" id="mot_de_passe" required >
+
+                        <?php if (isset($erreurs['mdp'])): ?>   
+                            <small class="form-error"><?= $erreurs['mdp'] ?></small>
+                        <?php endif; ?>
                     </div>
 
                     <div class="form-group">
                         <label for="confirmation">Confirmation <span class="required">*</span></label>
                         <input type="password" name="confirmation" id="confirmation" required>
+                        <?php if (isset($erreurs['confirmation'])): ?>
+                            <small class="form-error"><?= $erreurs['confirmation'] ?></small>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <p class="form-hint">8 caractères minimum </p>
@@ -42,7 +117,7 @@
                     M'inscrire maintenant
                 </button>
 
-                <p class="form-link">Déjà un compte ? <a href="connection.php">Connectez-vous</a></p>
+                <p class="form-link">Déjà un compte ? <a href="connexion.php">Connectez-vous</a></p>
             </form>
         </div>
     </div>

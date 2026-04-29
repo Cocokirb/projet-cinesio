@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +16,7 @@
 <body>
     <header> 
         <nav class="navbar">
-            <a href="" class="logo">
+            <a href="index.php" class="logo">
                 <p>
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels" viewBox="0 0 16 16">
