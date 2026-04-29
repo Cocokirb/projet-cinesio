@@ -53,6 +53,7 @@ function findAllPays() : array {
 
 }
 
+<<<<<<< HEAD
 function insertFilm($filmAInserer) : bool {
 
     $connexion = getConnexion() ;
@@ -75,5 +76,8 @@ function insertFilm($filmAInserer) : bool {
     return $requete ;
 
 }
+=======
+
+>>>>>>> 6dab161ec429d581b1ce3eab93e49ac5f9515010
 
 ?>
