@@ -4,6 +4,10 @@
     require_once __DIR__ . "/../src/lib/functions.php" ;
     require_once __DIR__ . "/../src/database/connection.php" ;
     
+    if(!isset($_SESSION['utilisateur'])){
+        header('Location: connexion.php');
+        exit ;
+    }
     $listeGenres = findAllGenres() ;
     $listePays = findAllPays() ;
     $titreFilm = '';
@@ -99,6 +103,7 @@
             $success = true ;
         }
     }
+
 ?>
 
 <!DOCTYPE html>

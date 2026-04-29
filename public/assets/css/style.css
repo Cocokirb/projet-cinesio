@@ -27,6 +27,7 @@
 
 .onglets{
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 20px;
     margin-left: auto;
@@ -783,6 +784,22 @@ form {
     font-size: 15px;
 }
 
+.pseudo{
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    background-color: #f5f5f5;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.deconnexion{
+    color: red;
+    font-size: 25px;
+}
 @media (max-width: 768px) {
     .form-colonne {
         grid-template-columns: 1fr;
