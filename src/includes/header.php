@@ -27,15 +27,9 @@
             </a>
 
             <ul class="onglets">
-<<<<<<< HEAD
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="inscription.php">Inscription</a></li>
                 <li><a href="ajouter_film.php">Ajouter un film</a></li>
-=======
-                <li><a href="index.php" style="color: violet;">Accueil</a></li>
-                <li><a href="#">Catalogue</a></li>
-                <li><a href="ajouter_film.php">Ajouter film</a></li>
->>>>>>> 6dab161ec429d581b1ce3eab93e49ac5f9515010
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>

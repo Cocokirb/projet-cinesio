@@ -210,11 +210,7 @@ h1{
 .synopsis-text{
     color: rgb(80, 80, 80);
     line-height: 1.6;
-<<<<<<< HEAD
     margin-bottom: 10px;
-=======
-    margin: 0;
->>>>>>> 6dab161ec429d581b1ce3eab93e49ac5f9515010
 }
 
 .error-container{
@@ -251,11 +247,6 @@ h1{
     width: auto;
 }
 
-<<<<<<< HEAD
-
-=======
-/* Styles du formulaire Ajouter un film */
->>>>>>> 6dab161ec429d581b1ce3eab93e49ac5f9515010
 .container {
     max-width: 900px;
     margin: 40px auto;
@@ -310,15 +301,8 @@ form {
     gap: 25px;
 }
 
-<<<<<<< HEAD
 .form-wrapper form {
     gap: 0;
-=======
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
->>>>>>> 6dab161ec429d581b1ce3eab93e49ac5f9515010
 }
 
 .form-colonne {
@@ -347,11 +331,7 @@ form {
     border: 1px solid rgb(200, 200, 200);
     border-radius: 6px;
     font-size: 14px;
-<<<<<<< HEAD
     font-family:'Times New Roman', Times, serif;
-=======
-    font-family: inherit;
->>>>>>> 6dab161ec429d581b1ce3eab93e49ac5f9515010
     color: rgb(26, 24, 24);
 }
 
@@ -411,7 +391,6 @@ form {
     transform: translateY(0);
 }
 
-<<<<<<< HEAD
 /* Styles pour la page Inscription */
 .inscription-container {
     max-width: 700px;
@@ -557,8 +536,6 @@ form {
     text-decoration: underline;
 }
 
-=======
->>>>>>> 6dab161ec429d581b1ce3eab93e49ac5f9515010
 @media (max-width: 768px) {
     .form-colonne {
         grid-template-columns: 1fr;
@@ -568,7 +545,6 @@ form {
         padding: 20px;
         margin: 20px;
     }
-<<<<<<< HEAD
     
     .form-row {
         grid-template-columns: 1fr;
@@ -581,6 +557,4 @@ form {
     .form-wrapper {
         padding: 20px;
     }
-=======
->>>>>>> 6dab161ec429d581b1ce3eab93e49ac5f9515010
 }
